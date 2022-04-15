@@ -1,0 +1,26 @@
+import pandas as pd
+
+#import xlsxwriter
+
+
+filename = r'C:\Users\明\Desktop\BMW\2022-04-04_09-12_beat_softwareverbund_I_K22_22-07_505_22w13_DE61.xlsx'
+sheetname = 'Funkt_und_Bewertung_n_Standort'
+data = pd.read_excel(filename,sheet_name=sheetname) 
+df = pd.DataFrame(data, columns= ['Name EN Reportelement','AIDA IP RG','Standort RG','Standort Bemerkung'])
+print (df)
+df.to_excel(r'C:\Users\明\Desktop\BMW\list.xls')
+from pptx import Presentation
+ 
+# 创建幻灯片 ------
+prs = Presentation()
+title_slide_layout = prs.slide_layouts[0]
+slide = prs.slides.add_slide(title_slide_layout)
+ 
+title = slide.shapes.title
+subtitle = slide.placeholders[1]
+ 
+# 设置标题和副标题
+title.text = "Hello, World!"
+subtitle.text = "pip install python-pptx"
+ 
+prs.save("test.pptx")
